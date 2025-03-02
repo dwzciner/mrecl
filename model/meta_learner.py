@@ -351,7 +351,7 @@ class MetaLearingClassification(nn.Module):
         # print(self.lamda)
         loss_q = F.cross_entropy(logits, y)
         # args.m batch-size lamda_inv
-        mec_loss = self.mu * (loss_func(p, logits, self.lamda))
+        mec_loss = self.mu * (loss_func(p, logits, self.lamda)) / self.m
         loss = loss_q - mec_loss * self.lamda
 
         return loss, logits,
@@ -411,6 +411,7 @@ class MetaLearingClassification(nn.Module):
 
         # Taking the meta gradient step
         self.optimizer.zero_grad()
+        print(meta_losses)
         meta_loss = meta_losses[-1]
         meta_loss.backward()
 

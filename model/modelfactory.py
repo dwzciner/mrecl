@@ -119,6 +119,8 @@ class ModelFactory():
                 {"name": 'rep'},
 
                 # PLN
+                {"name": 'relu'},
+
                 {"name": 'linear', "adaptation": True, "meta": True,
                  "config": {"out": 1000, "in": 1000}}
 
