@@ -108,8 +108,7 @@ class Learner(nn.Module):
                 w, b = vars[idx], vars[idx + 1]
                 x = F.linear(x, w, b)
                 idx += 2
-                if layer_counter == 15:
-                    self.m = x.shape[0]
+
                     # print('?')
                 # print(f"{layer_counter} x.shape {x.shape}")
 
@@ -132,6 +131,7 @@ class Learner(nn.Module):
                 if layer_counter == 14:
                     p = x
                     # print("获取特征p")
+                    self.m = x.shape[0]
                 if rep:
                     return x
 
