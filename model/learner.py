@@ -128,7 +128,7 @@ class Learner(nn.Module):
                 continue
 
             elif name == 'rep':
-                print(f"{layer_counter} x.shape {x.shape}")
+                #print(f"{layer_counter} x.shape {x.shape}")
                 if layer_counter == 14:
                     p = x
                     # print("获取特征p")
