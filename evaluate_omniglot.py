@@ -40,7 +40,7 @@ def eval_iterator(iterator, device, maml):
         target = target.to(device)
         logits_q = maml(img)
 
-        pred_q = (logits_q).argmax(dim=1)
+        pred_q = (logits_q[0]).argmax(dim=1)
 
         correct += torch.eq(pred_q, target).sum().item() / len(img)
     return correct / len(iterator)
@@ -52,7 +52,7 @@ def train_iterator(iterator_sorted, device, maml, opt):
 
         pred = maml(img)
         opt.zero_grad()
-        loss = F.cross_entropy(pred, y)
+        loss = F.cross_entropy(pred[0], y.long())
         loss.backward()
         opt.step()
 

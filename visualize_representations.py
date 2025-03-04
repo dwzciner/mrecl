@@ -65,7 +65,9 @@ def main(args):
             target = target.to(device)
             # print(target)
             rep = maml(img, vars=None, rep=True)
-            rep = rep.view((-1, 32, 72)).detach().cpu().numpy()
+            #print(rep[0].shape)
+            rep = rep.view((-1, 20, 50)).detach().cpu().numpy()
+            # rep = rep.view((-1, 32, 72)).detach().cpu().numpy()
 
             rep_instance = rep[0]
             if args.binary:
